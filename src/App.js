@@ -8,22 +8,22 @@ const API_ID = "429e234f";
 const API_KEY = "bee7ef11edc44ad6ea3be36930973585";
 
 const App = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [query, setQuery] = useState("dessert"); // Default query is "dessert"
-  const [error, setError] = useState("");
+  const [recipes, setRecipes] = useState([]); // State for storing recipes
+  const [query, setQuery] = useState(""); // Search query state
+  const [error, setError] = useState(""); // State for handling errors
 
+  // This effect will trigger the fetch when the query changes
   useEffect(() => {
-    if (query === "") return; // Don't fetch recipes if the query is empty
-    fetchRecipes();
+    fetchRecipes(query || "buns"); // Default to "buns" if query is empty
   }, [query]);
 
-  const fetchRecipes = async () => {
-    setError(""); // Reset error before fetching
+  const fetchRecipes = async (searchQuery) => {
+    setError(""); // Reset the error state
     try {
       const response = await axios.get(
-        `https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=10`
+        `https://api.edamam.com/search?q=${searchQuery}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=10`
       );
-      setRecipes(response.data.hits);
+      setRecipes(response.data.hits); // Set the fetched recipes
     } catch (error) {
       setError("Error fetching recipes. Please try again.");
       console.error("Error fetching recipes:", error);
@@ -33,14 +33,14 @@ const App = () => {
   return (
     <div className="App">
       <h1>Recipe App</h1>
-      <SearchBar setQuery={setQuery} />
-
+      <SearchBar setQuery={setQuery} />{" "}
+      {/* Search bar component for user input */}
       {/* Show error messages */}
       {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {/* Display recipes */}
-      {!error && recipes.length > 0 && <RecipeList recipes={recipes} />}
-      {!error && recipes.length === 0 && query !== "" && (
+      {/* Display recipes if available */}
+      {recipes.length > 0 && !error && <RecipeList recipes={recipes} />}
+      {/* If no recipes found, show a message */}
+      {recipes.length === 0 && !error && query !== "" && (
         <p>No recipes found for "{query}". Try a different search!</p>
       )}
     </div>
