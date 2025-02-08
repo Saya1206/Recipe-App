@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# 🍕 Recipe App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Recipe App! This app allows users to search for recipes and view a list of delicious dishes based on the search query. You can search for recipes by ingredient, dish name, or cuisine.
 
-## Available Scripts
+## Features
+- Search for recipes based on ingredients or dish names.
+- View recipe details such as image, ingredients, and instructions.
+- Responsive layout for easy use across different devices.
 
-In the project directory, you can run:
+## Demo
 
-### `npm start`
+[Insert a link to the live demo of your app (if available)].
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
+- **React**: For building the user interface.
+- **Axios**: For making HTTP requests to the Edamam API.
+- **Edamam API**: To fetch recipe data (recipes, images, ingredients, etc.).
+- **CSS**: For styling the components.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## API Integration
 
-### `npm test`
+This app fetches recipe data from the **Edamam Recipe Search API**. To use this API, you need an `API_ID` and `API_KEY`. These keys are required to make requests to the Edamam API.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How to Get Your API Credentials:
+1. Sign up at [Edamam API](https://developer.edamam.com/) and create an account.
+2. Once signed in, navigate to the **API Keys** section to obtain your `API_ID` and `API_KEY`.
 
-### `npm run build`
+### How the API Works:
+1. **Search Query**: The app fetches recipes based on the search query. The query can be any food item like "pizza", "pasta", "dessert", etc.
+2. **API Request**: The app makes an HTTP GET request to the Edamam API with the provided query, API ID, and API key. 
+3. **Response**: The response contains a list of recipes, each with details like the recipe name, image, ingredients, and instructions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+recipe-app/
+├── src/
+│   ├── components/
+│   │   ├── RecipeList.js      # Component to display recipes
+│   │   ├── SearchBar.js       # Component for the search input
+│   ├── App.js                 # Main component to handle state and API calls
+│   ├── App.css                # Styling for the app
+├── package.json               # Project metadata and dependencies
+└── README.md                  # This file
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Live Demo
 
-### `npm run eject`
+You can try the live demo of the app here: [Live Demo](https://saya1206.github.io/Recipe-App/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
